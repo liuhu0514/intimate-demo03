@@ -5,6 +5,14 @@
     <title>首页</title>
 </head>
 <body>
-    <h1>首页</h1>
+    <h1>下面是所有投票项请选择你感兴趣的进行投票吧</h1>
+	<lu>
+		{% for q in qs %}
+			<li><a href="vote/{{q.id}}/">{{q.qname}}</a></li>
+		{% empty %}
+			<h4>暂时还没投票活动，敬请期待！</h4>
+		{% endfor %}
+		
+	</lu>
 </body>
 </html>

@@ -5,6 +5,15 @@
     <title>详情</title>
 </head>
 <body>
-    <h1>详情页面</h1>
+    <h1>{{q.qname}}投票详情页面</h1>
+	<h3>总共参加人次：{{q.qpoll}}</h3>
+	<ul>
+		{% for c in q.choice_set.all %}
+			<li>{{c.cname}}：{{c.cpoll}}票</li>
+		{% empty %}
+			<h4>本投票还未开始!</h4>
+		{% endfor %}
+	</ul>
+	<a href="/votetest/">返回投票中心</a>
 </body>
 </html>
