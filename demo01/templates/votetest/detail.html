@@ -14,6 +14,7 @@
 			<h4>本投票还未开始!</h4>
 		{% endfor %}
 	</ul>
-	<a href="/votetest/">返回投票中心</a>
+	{# <a href="/votetest/">返回投票中心</a> #}
+	<a href="{% url 'votetest:index' %}">返回投票中心</a>
 </body>
 </html>

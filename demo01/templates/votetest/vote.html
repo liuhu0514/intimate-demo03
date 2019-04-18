@@ -8,7 +8,8 @@
     <h1>投票页</h1>
 	<h3>投票问题为：{{q.qname}}</h3>
 	<ul>
-		<form action="/votetest/addvote/{{q.id}}/" method="post">
+		{# <form action="/votetest/addvote/{{q.id}}/" method="post"> #}
+		<form action="{% url 'votetest:addvote' q.id %}" method="post">
 			{% for c in q.choice_set.all %}
 				<li><input type="radio" name="option" value="{{c.id}}" checked />{{c.cname}}</li>
 			{% empty %}
@@ -17,6 +18,7 @@
 			<input type="submit" value="提交"/>
 		</form>
 	</ul>
-	<a href="/votetest">返回投票中心</a>
+	{# <a href="/votetest">返回投票中心</a> #}
+	<a href="{% url 'votetest:index' %}">返回投票中心</a>
 </body>
 </html>
