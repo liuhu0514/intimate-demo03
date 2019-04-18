@@ -6,12 +6,17 @@ from django.template import loader
 
 
 def index(request):
-    return HttpResponse('首页')
+    temp = loader.get_template('votetest/index.html')
+    temp = temp.render()
+    return HttpResponse(temp)
 
 
 def vote(request):
-    return HttpResponse('投票')
+    temp = loader.get_template('votetest/vote.html')
+    temp = temp.render()
+    return HttpResponse(temp)
 
 def detail(request):
-    return HttpResponse('详情')
+
+    return render(request, 'votetest/detail.html')
 
