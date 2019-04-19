@@ -7,11 +7,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{q.qname}}投票详情页面</h1>
-        <h3>总共参加人次：{{q.qpoll}}</h3>
+        <h3>投票详情页面</h3>
+		<h3>问题：{{q.qname}}</h3>
+        <h3>总共参加人次：{{q.qpoll}}人次</h3>
         <ul>
             {% for c in q.choice_set.all %}
-                <li>{{c.cname}}：{{c.cpoll}}票</li>
+                <li>选项{{forloop.counter}}：{{c.cname}}：{{c.cpoll}}票</li>
             {% empty %}
                 <h4>本投票还未开始!</h4>
             {% endfor %}

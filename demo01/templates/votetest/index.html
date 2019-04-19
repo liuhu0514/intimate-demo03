@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
+    <title>投票中心</title>
     <link rel="stylesheet" href="/static/votetest/css/main.css">
 </head>
 <body>
     <div class="container">
-		<h3>下面是所有投票项请选择你感兴趣的进行投票吧</h3>
+		<p>欢迎来到小飞虎投票中心</p>
 		<lu>
 			{% for q in qs %}
 				{# <li><a href="vote/{{q.id}}/">{{q.qname}}</a></li> #}
-				<li><a href="{% url 'votetest:vote' q.id %}">{{q.qname}}</a></li>
+				<li><span>项目{{forloop.counter}}：</span><a href="{% url 'votetest:vote' q.id %}">{{q.qname}}</a></li>
 			{% empty %}
 				<h4>暂时还没投票活动，敬请期待！</h4>
 			{% endfor %}
