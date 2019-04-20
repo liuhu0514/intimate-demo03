@@ -13,4 +13,7 @@ urlpatterns = [
     url(r'^editres/(\d+)/$', views.editres, name='editres'),
     url(r'^add/$', views.add, name='add'),
     url(r'^addres$', views.addres, name='addres'),
+    url(r'^addchoice/(\d+)/$', views.addchoice, name='addchoice'),
+    url(r'^addchoicehandle/(\d+)/$', views.addchoicehandle, name='addchoicehandle'),
+    url(r'^deletechoice/(\d+)/$', views.deletechoice, name='deletechoice'),
 ]

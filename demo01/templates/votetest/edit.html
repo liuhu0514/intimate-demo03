@@ -13,13 +13,19 @@
 			<ul>
 			    <li><span>问题名：</span><input type="text" name="qname" value="{{q.qname}}" required></li>
 			    {% for c in q.choice_set.all %}
-			        <li><span>选项&nbsp;{{forloop.counter}}：</span><input type="text" name="{{c.id}}" value="{{c.cname}}" required></li>
+			        <li>
+						<span>选项&nbsp;{{forloop.counter}}：</span>
+						<input type="text" name="{{c.id}}" value="{{c.cname}}" required>
+						<a href="{% url 'votetest:deletechoice' c.id %}">删除</a>
+					</li>
 			    {% empty %}
 					<h4>暂时没有选项</h4>
 			    {% endfor %}
+				<li><a href="{% url 'votetest:addchoice' q.id %}" style="display: block; float: right;" >添加选项</a></li>
+				<div style="height: 30px" ></div>
+				<li><input style="display: block; float: none" type="submit" value="确认编辑"/></li>
 			</ul>
-        	
-        	<input type="submit" value="确认编辑"/>
+
         </form>
 		{% if info %}
 			<h5>{{info}}</h5>

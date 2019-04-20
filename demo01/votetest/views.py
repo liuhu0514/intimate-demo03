@@ -52,7 +52,7 @@ def editres(request, qid):
     for c in cs:
         c.cname = request.POST[str(c.id)]
         c.save()
-    return HttpResponseRedirect('/votetest/edit/'+str(qid)+'/', {'q': q, 'info': '编辑成功'})
+    return HttpResponseRedirect('/votetest/')
 
 
 def add(request):
@@ -75,3 +75,21 @@ def addres(request):
     c2.cname = c2name
     c2.save()
     return HttpResponseRedirect('/votetest/')
+
+
+def addchoice(request, qid):
+    q = Question.objects.get(pk=qid)
+    return render(request, 'votetest/addchoice.html', {'q': q})
+
+
+def addchoicehandle(request, qid):
+    q = Question.objects.get(pk=qid)
+    Choice.objects.create(cname=request.POST['cname'], cque=q).save()
+    return HttpResponseRedirect('/votetest/edit/'+str(qid)+'/', {'q': q})
+
+
+def deletechoice(request, cid):
+    c = Choice.objects.get(pk=cid)
+    q = c.cque
+    c.delete()
+    return HttpResponseRedirect('/votetest/edit/' + str(q.id) + '/', {'q': q})

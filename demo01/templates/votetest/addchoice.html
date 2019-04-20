@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加选项</title>
+    <link rel="stylesheet" href="/static/votetest/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <p>请给{{q.qname}}添加选项</p>
+        <form action="{% url 'votetest:addchoicehandle' q.id %}" method="post">
+            选项：<input type="text" name="cname">
+            <br>
+            <input type="submit" value="添加">
+        </form>
+        <a href="{% url 'votetest:edit' q.id %}">返回编辑页面</a>
+    </div>
+
+</body>
+</html>
