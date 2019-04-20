@@ -12,7 +12,7 @@
         <ul>
             <form action="{% url 'votetest:addvote' q.id %}" method="post">
                 {% for c in q.choice_set.all %}
-                    <li><input type="radio" name="option" value="{{c.id}}" checked />{{c.cname}}</li>
+                    <li><input type="radio" name="option" value="{{c.id}}" required />{{c.cname}}</li>
                 {% empty %}
                     <h4>该投票还未开始，敬请期待！快快去参与其他的投票把</h4>
                 {% endfor %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>添加投票项</title>
+		<link rel="stylesheet" href="/static/votetest/css/main.css">
+	</head>
+	<body>
+		<div class="container">
+			<p>欢迎来到小飞虎投票添加中心</p>
+			<div class="cen">
+				<form action="{% url 'votetest:addres' %}" method="post">
+					<ul>
+						<li><span>问&nbsp;&nbsp;题：</span><input type="text" name="qname" required="required" /></li>
+						<li><span>选项1：</span><input type="text" name="c1" required="required" /></li>
+						<li><span>选项2：</span><input type="text" name="c2" required /></li>
+					</ul>
+				<div><input type="submit" value="添加"/></div>
+				</form>
+			</div>
+			<a href="{% url 'votetest:index' %}">返回首页</a>
+		</div>
+	</body>
+</html>

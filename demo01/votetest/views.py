@@ -33,3 +33,45 @@ def detail(request, qid):
 
     return render(request, 'votetest/detail.html', {'q': q})
 
+
+def delete(request, qid):
+    Question.objects.get(pk=qid).delete()
+    return HttpResponseRedirect('/votetest/')
+
+
+def edit(request, qid):
+    q = Question.objects.get(pk=qid)
+    return render(request, 'votetest/edit.html', {'q': q})
+
+
+def editres(request, qid):
+    q = Question.objects.get(pk=qid)
+    q.qname = request.POST['qname']
+    q.save()
+    cs = q.choice_set.all()
+    for c in cs:
+        c.cname = request.POST[str(c.id)]
+        c.save()
+    return HttpResponseRedirect('/votetest/edit/'+str(qid)+'/', {'q': q, 'info': '编辑成功'})
+
+
+def add(request):
+    return render(request, 'votetest/add.html')
+
+
+def addres(request):
+    qname = request.POST['qname']
+    c1name = request.POST['c1']
+    c2name = request.POST['c2']
+    q = Question()
+    q.qname = qname
+    q.save()
+    c1 = Choice()
+    c1.cname = c1name
+    c1.cque = q
+    c1.save()
+    c2 = Choice()
+    c2.cque = q
+    c2.cname = c2name
+    c2.save()
+    return HttpResponseRedirect('/votetest/')
